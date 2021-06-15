@@ -1,17 +1,20 @@
 {
   "name": "electron-auto-update-example",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.5",
+  "description": "electron-apps",
   "main": "main.js",
-  "repository": {
-    "type" : "git",
-    "url" : "https://github.com/johndyer24/electron-auto-update-example.git"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron .",
-    "build": "electron-builder build --mac --win --publish never",
-    "deploy": "electron-builder build --mac --win --publish always"
+    "start": "electron ./main.js",
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
+  },
+  "build": {
+    "publish": {
+      "provider": "s3",
+      "bucket": "electron-apps2",
+      "region": "us-east-1"
+    }
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +23,7 @@
     "electron-builder": "^20.40.2"
   },
   "dependencies": {
+    "electron-log": "^4.3.5",
     "electron-updater": "^4.0.6"
   }
 }
